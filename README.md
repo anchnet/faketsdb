@@ -1,6 +1,12 @@
 # faketsdb
 Forward data to InfluxDB with fake OpenTSDB protocol in Open-Falcon
 
+## Usage
+```sh
+go get github.com/51idc/faketsdb
+```
+
+## Helper
 ```sh
 🍺 eagle [~] → faketsdb -h
 Usage of faketsdb:
