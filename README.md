@@ -6,6 +6,24 @@ Forward data to InfluxDB with fake OpenTSDB protocol in Open-Falcon
 go get github.com/51idc/faketsdb
 ```
 
+## Open-Falcon Transfer
+// cfg.json
+```
+{
+    //.....
+    "tsdb": {
+        "enabled": false,   # don't forget turn enable
+        "batch": 200,
+        "connTimeout": 1000,
+        "callTimeout": 5000,
+        "maxConns": 32,
+        "maxIdle": 32,
+        "retry": 3,
+        "address": "127.0.0.1:8088"   # modify here 8089(default)
+    }
+}
+```
+
 ## Helper
 ```sh
 🍺 eagle [~] → faketsdb -h
