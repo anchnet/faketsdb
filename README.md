@@ -37,3 +37,7 @@ Usage of faketsdb:
   -port int
     	Fake proxy listen port. (default 8089)
  ```
+ 
+ ## Daemon
+ 
+ Recommended Supervisor 
