@@ -17,6 +17,8 @@ var (
 	cache = 3
 
 	influxDatabase = "test"
+
+	debug = false
 )
 
 func init() {
@@ -24,6 +26,7 @@ func init() {
 	flag.IntVar(&cache, "cache", cache, "Number of batch items send to influx.")
 	flag.StringVar(&influxAddress, "influxAddr", influxAddress, "InfluxDB HTTP API address.")
 	flag.StringVar(&influxDatabase, "influxDatabase", influxDatabase, "InfluxDB Database.")
+	flag.BoolVar(&debug, "debug", debug, "Enable debug mode.")
 	flag.Parse()
 
 	if !strings.HasPrefix(influxAddress, "http://") && !strings.HasPrefix(influxAddress, "https://") {

@@ -117,7 +117,10 @@ func (s *TSDBServer) OnMessage(c *Client, message string) {
 			log.Printf("ERROR: %s", err.Error())
 			return
 		}
-		log.Printf("Message: %s\n", item)
+
+		if debug {
+			log.Printf("Message: %s\n", item)
+		}
 
 		fields := map[string]interface{}{"value": item.Value}
 		t := time.Unix(item.Timestamp, 0)
