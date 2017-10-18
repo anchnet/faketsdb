@@ -48,8 +48,8 @@ func ParseTSDBItem(str string) (*TsdbItem, error) {
 		return nil, errors.New("Invalid protocol: number of segments less than 5.")
 	}
 
-	if strings.ToLower(segments[0]) != "put" {
-		return nil, errors.New("Invalid protocol: only suppurt \"put\" operate.")
+	if operate := strings.ToLower(segments[0]); operate != "put" {
+		return nil, errors.New("Invalid protocol: only suppurt \"put\" operate, " + operate + " given.")
 	}
 
 	item := &TsdbItem{
@@ -59,12 +59,12 @@ func ParseTSDBItem(str string) (*TsdbItem, error) {
 	var err error
 	item.Timestamp, err = strconv.ParseInt(segments[2], 10, 64)
 	if err != nil {
-		return nil, errors.New("Invalid protocol: failed to parse timestamp.")
+		return nil, errors.New("Invalid protocol: failed to parse timestamp [" + segments[2] + "], " + err.Error())
 	}
 
 	item.Value, err = strconv.ParseFloat(segments[3], 64)
 	if err != nil {
-		return nil, errors.New("Invalid protocol: failed to parse value.")
+		return nil, errors.New("Invalid protocol: failed to parse value [" + segments[3] + "], " + err.Error())
 	}
 
 	item.Tags = make(map[string]string)
