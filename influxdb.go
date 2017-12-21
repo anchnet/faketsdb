@@ -47,7 +47,9 @@ func (r *InfluxDBReciver) ListenTask() {
 		for {
 			points[n] = <-influxDBChan
 			if n == r.cache-1 {
-				influxRevciver.AddBatchPoint(points)
+				if err := influxRevciver.AddBatchPoint(points); err != nil {
+					log.Printf("Failed AddBatchPoint: %s", err.Error())
+				}
 				n = 0
 				continue
 			}
